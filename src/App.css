@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+/* Estilos para el tema claro */
+.light {
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Colores para los enlaces en el tema claro */
+.light a {
+  color: #212529;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.light a:hover {
+  color: #0056b3;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Estilos para el tema oscuro */
+.dark {
+  background-color: #2d2d2d;
+  color: #f8f9fa;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Colores para los enlaces del header en tema oscuro */
+header a {
+  color: #ffffff;
+}
+
+header a:hover {
+  color: #00bfff;
+}
+
+/* Ajustes de espacio para el buscador */
+input[type="text"] {
+  background-color: transparent;
+  border: 1px solid #666;
   color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  width: 200px;
+  transition: width 0.4s ease;
 }
 
-.App-link {
-  color: #61dafb;
+input[type="text"]:focus {
+  width: 300px;
+  border-color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilos de botones */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.dark button {
+  background-color: #495057;
+}
+
+.dark button:hover {
+  background-color: #343a40;
 }
