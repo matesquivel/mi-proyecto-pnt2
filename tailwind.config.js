@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Añade esto para que Tailwind procese tus archivos JS
+    "./src/**/*.{js,jsx,ts,tsx}", // Asegúrate de que las rutas de los archivos sean correctas
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'), // Aquí es donde se carga el plugin de forms
+  ],
 }
-
