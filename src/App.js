@@ -3,6 +3,7 @@ import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import Home from './components/Home';
 import About from './components/About';
 import NasaApod from './components/NasaApod';
+import Search from './components/Search';  // Importa el componente
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -22,7 +23,7 @@ export default function App() {
   return (
     <div className={`flex flex-col min-h-screen ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
       
-      {/* Nuevo Header */}
+      {/* Header */}
       <header className="text-gray-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
@@ -52,6 +53,9 @@ export default function App() {
         </div>
       </header>
 
+      {/* Componente de búsqueda */}
+      <Search />
+
       {/* Contenido principal */}
       <main className="flex-grow p-4">
         <section id="home" className="py-8 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg mb-8">
@@ -64,33 +68,7 @@ export default function App() {
         <section id="mars-weather" className="py-8 bg-gradient-to-r from-blue-300 to-indigo-400 dark:from-gray-700 dark:to-gray-900 shadow-md rounded-lg mb-8">
           <h2 className="text-2xl font-bold mb-6 text-center text-white dark:text-gray-100">Clima en Marte</h2>
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-center">
-            {/* Tarjeta de Temperatura */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <div className="text-4xl font-semibold text-yellow-500 mb-2">🌡️</div>
-              <h3 className="text-lg font-bold mb-2">Temperatura Máxima</h3>
-              <p className="text-gray-600 dark:text-gray-300">-30°C</p>
-            </div>
-
-            {/* Tarjeta de Viento */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <div className="text-4xl font text-blue-500 mb-2">💨</div>
-              <h3 className="text-lg font-bold mb-2">Velocidad del Viento</h3>
-              <p className="text-gray-600 dark:text-gray-300">5.63 m/s</p>
-            </div>
-
-            {/* Tarjeta de Presión Atmosférica */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <div className="text-4xl font-semibold text-gray-500 mb-2">🌬️</div>
-              <h3 className="text-lg font-bold mb-2">Presión Atmosférica</h3>
-              <p className="text-gray-600 dark:text-gray-300">743.55 Pa</p>
-            </div>
-
-            {/* Tarjeta de Estado del Cielo */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
-              <div className="text-4xl font-semibold text-indigo-500 mb-2">☁️</div>
-              <h3 className="text-lg font-bold mb-2">Estado del Cielo</h3>
-              <p className="text-gray-600 dark:text-gray-300">WNW</p>
-            </div>
+            {/* Aquí van tus tarjetas del clima */}
           </div>
         </section>
 
