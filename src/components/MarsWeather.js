@@ -1,50 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 function MarsWeather() {
-  const [weatherData, setWeatherData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    // URL de la API de InSight Mars Weather
-    const API_KEY = 'vkkGwSJXDi7bzw0FQAZGQvwGTDSO3KWoj01plMkV';  // key
-    const URL = `https://api.nasa.gov/insight_weather/?api_key=${API_KEY}&feedtype=json&ver=1.0`;
-
-    // Hacer la petición a la API
-    axios.get(URL)
-      .then((response) => {
-        setWeatherData(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError('Hubo un problema al obtener los datos del clima en Marte.');
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <p>Cargando datos del clima en Marte...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  // Los datos meteorológicos más recientes están bajo el objeto "sol_keys"
-  const solKeys = weatherData.sol_keys;  // Las claves que identifican cada sol (día marciano)
-  const latestSol = solKeys[solKeys.length - 1];  // Último día registrado
-  const latestWeather = weatherData[latestSol];  // Datos del clima del último sol
-
   return (
-    <div>
-      <h2>Clima en Marte - Sol {latestSol}</h2>
-      <p><strong>Temperatura Máxima:</strong> {latestWeather.AT.max}°C</p>
-      <p><strong>Temperatura Mínima:</strong> {latestWeather.AT.min}°C</p>
-      <p><strong>Presión Atmosférica:</strong> {latestWeather.PRE.av} Pa</p>
-      <p><strong>Velocidad del Viento:</strong> {latestWeather.HWS.av} m/s</p>
-      <p><strong>Estado del Cielo:</strong> {latestWeather.WD.most_common ? latestWeather.WD.most_common.compass_point : 'Desconocido'}</p>
-    </div>
+    <section id="mars-weather" className="py-8 bg-gradient-to-r from-blue-300 to-indigo-400 dark:from-gray-700 dark:to-gray-900 shadow-md rounded-lg mb-8">
+      <h2 className="text-2xl font-bold mb-6 text-center text-white dark:text-gray-100">Clima en Marte</h2>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-center">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+          <div className="text-4xl font-semibold text-yellow-500 mb-2">🌡️</div>
+          <h3 className="text-lg font-bold mb-2 dark:text-gray-100">Temperatura Máxima</h3>
+          <p className="text-gray-600 dark:text-gray-300">-30°C</p>
+        </div>
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+          <div className="text-4xl font-semibold text-blue-500 mb-2">💨</div>
+          <h3 className="text-lg font-bold mb-2 dark:text-gray-100">Velocidad del Viento</h3>
+          <p className="text-gray-600 dark:text-gray-300">5.63 m/s</p>
+        </div>
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+          <div className="text-4xl font-semibold text-gray-500 mb-2">🌬️</div>
+          <h3 className="text-lg font-bold mb-2 dark:text-gray-100">Presión Atmosférica</h3>
+          <p className="text-gray-600 dark:text-gray-300">743.55 Pa</p>
+        </div>
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg transform transition hover:scale-105">
+          <div className="text-4xl font-semibold text-indigo-500 mb-2">☁️</div>
+          <h3 className="text-lg font-bold mb-2 dark:text-gray-100">Estado del Cielo</h3>
+          <p className="text-gray-600 dark:text-gray-300">WNW</p>
+        </div>
+      </div>
+    </section>
   );
 }
 
