@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import DarkModeToggle from './DarkModeToggle'; // Asegúrate de importar correctamente
+import DarkModeToggle from './DarkModeToggle';
 
-function Navbar() {
+function Navbar({ toggleDarkMode, darkMode }) {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -13,7 +13,7 @@ function Navbar() {
 
         {/* Botón para cambiar el tema */}
         <div className="flex md:order-2">
-          <DarkModeToggle />
+          <DarkModeToggle toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
         </div>
 
         {/* Menú de navegación con react-scroll */}

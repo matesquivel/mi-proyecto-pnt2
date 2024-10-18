@@ -2,7 +2,7 @@ import React from 'react';
 
 function About() {
   return (
-      <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow">
+      <div className="py-8 bg-gray-200 dark:bg-gray-700 shadow-md rounded-lg mb-8">
       <h1>Si queres saber mas, preguntale a GFS</h1>
       </div> );
   }

@@ -7,8 +7,7 @@ import NasaApod from './components/NasaApod';
 import Footer from './components/Footer';
 
 function App() {
-  // Inicializamos el estado del tema oscuro basándonos en las preferencias del sistema operativo.
-  const [darkMode, setDarkMode] = useState(() => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -24,9 +23,12 @@ function App() {
 
   return (
     <div className={`flex flex-col min-h-screen ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
+      {/* Navbar con el botón para alternar el tema */}
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+      
+      {/* Contenido principal */}
       <main className="flex-grow p-4">
-        <section id="home" className="py-8 bg-gray-50 dark:bg-gray-900 shadow-md rounded-lg mb-8">
+        <section id="home" className="py-8 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg mb-8">
           <Home />
         </section>
 
@@ -42,6 +44,8 @@ function App() {
           <About />
         </section>
       </main>
+
+      {/* Footer */}
       <Footer />
     </div>
   );
