@@ -1,31 +1,24 @@
-import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import About from './components/About';
 import MarsWeather from './components/MarsWeather';
 import NasaApod from './components/NasaApod';
+import About from './components/About';
 import Footer from './components/Footer';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
-    <div className={`flex flex-col min-h-screen ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'}`}>
-      {/* Navbar con el botón para alternar el tema */}
-      <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-      
+    <div className="flex flex-col min-h-screen">
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Selector de tema con DaisyUI */}
+      <div className="flex justify-end space-x-4 p-4">
+        <select className="select select-bordered w-full max-w-xs" data-choose-theme>
+          <option value="light">Modo Claro</option>
+          <option value="dark">Modo Oscuro</option>
+        </select>
+      </div>
+
       {/* Contenido principal */}
       <main className="flex-grow p-4">
         <section id="home" className="py-8 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg mb-8">

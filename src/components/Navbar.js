@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import DarkModeToggle from './DarkModeToggle';
 
-function Navbar({ toggleDarkMode, darkMode }) {
+function Navbar() {
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -11,13 +10,8 @@ function Navbar({ toggleDarkMode, darkMode }) {
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
         </a>
 
-        {/* Botón para cambiar el tema */}
-        <div className="flex md:order-2">
-          <DarkModeToggle toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-        </div>
-
         {/* Menú de navegación con react-scroll */}
-        <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+        <div className="items-center justify-between w-full md:flex md:w-auto md:order-1">
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link

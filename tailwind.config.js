@@ -12,4 +12,7 @@ module.exports = {
     require('daisyui'), // Incluye DaisyUI
     require('flowbite/plugin'), // Incluye Flowbite
   ],
+  daisyui: {
+    themes: ['light', 'dark'], // O añadir más temas según desees
+  },
 };

@@ -16,39 +16,32 @@ function NasaApod() {
         setLoading(false);
       })
       .catch((error) => {
-        setError('Hubo un problema al obtener los datos');
+        setError('Error al obtener la imagen del día');
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <p className="text-center text-gray-500 dark:text-gray-400">Cargando...</p>;
+    return <p>Cargando...</p>;
   }
 
   if (error) {
-    return <p className="text-center text-red-500 dark:text-red-400">{error}</p>;
+    return <p>{error}</p>;
   }
 
   return (
-    <section id="nasa" className="py-8 bg-gradient-to-r from-blue-300 to-indigo-400 dark:from-gray-700 dark:to-gray-900 shadow-md rounded-lg mb-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        {/* Imagen grande */}
-        <div className="overflow-hidden rounded-lg shadow-lg">
-          <img
-            src={data.url}
-            alt={data.title}
-            className="w-full object-cover"
-          />
-        </div>
-
-        {/* Contenedor de texto */}
-        <div className="text-center lg:text-left space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">{data.title}</h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">{data.date}</p>
-          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            {data.explanation}
-          </p>
-        </div>
+    <section id="nasa" className="py-8 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg mb-8">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Imagen del Día de la NASA</h2>
+      <div className="flex flex-col items-center justify-center">
+        {/* Imagen con ancho máximo */}
+        <img
+          src={data.url}
+          alt={data.title}
+          className="w-full max-w-lg object-cover rounded-lg shadow-lg mb-4"
+        />
+        {/* Texto descriptivo */}
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{data.title}</h3>
+        <p className="text-gray-600 dark:text-gray-300">{data.explanation}</p>
       </div>
     </section>
   );
