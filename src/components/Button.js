@@ -18,7 +18,7 @@ function Button() {
     return (
 <button
 onClick={toggleDarkMode}
-className="relative inline-flex items-center w-16 h-8 rounded-full bg-gray-300 dark:bg-gray-600 focus:outline-none transition-all duration-300"
+className="relative inline-flex items-center w-16 h-8 rounded-full light:bg-gray-300 dark:bg-gray-600 focus:outline-none transition-all duration-300"
 >
 <span className={`absolute w-7 h-7 rounded-full bg-white transform transition-transform duration-300 ease-in-out ${darkMode ? 'translate-x-8' : 'translate-x-1'}`}></span>
 <span className="absolute inset-0 flex items-center justify-between px-1">

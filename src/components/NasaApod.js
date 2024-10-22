@@ -30,8 +30,8 @@ function NasaApod() {
   }
 
   return (
-    <section id="nasa" className="py-8 bg-gray-50 dark:bg-gray-800 shadow-md rounded-lg mb-8">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-gray-100">Imagen del Día de la NASA</h2>
+    <section id="nasa" className="py-8 bg-base-100 shadow-md rounded-lg mb-8">
+      <h2 className="text-2xl font-bold mb-6 text-center text-base-content">Imagen del Día de la NASA</h2>
       <div className="flex flex-col items-center justify-center">
         {/* Imagen con ancho máximo */}
         <img
@@ -40,8 +40,8 @@ function NasaApod() {
           className="w-full max-w-lg object-cover rounded-lg shadow-lg mb-4"
         />
         {/* Texto descriptivo */}
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{data.title}</h3>
-        <p className="text-gray-600 dark:text-gray-300">{data.explanation}</p>
+        <h3 className="text-xl font-semibold text-base-content">{data.title}</h3>
+        <p className="text-base-content">{data.explanation}</p>
       </div>
     </section>
   );
