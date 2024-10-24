@@ -7,6 +7,6 @@ module.exports = {
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ['light', 'dark', 'corporate', 'synthwave', 'retro'], // Se incluyen varios temas
+    themes: ["light", "dark"], // Se incluyen varios temas
   },
 };

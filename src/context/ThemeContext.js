@@ -1,19 +1,26 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 // Crear el contexto del tema
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);  // Estado para manejar el tema
-  
-  // Función para alternar el tema
-  const toggleTheme = () => {
-    console.log('Cambiando el tema:', !isDarkMode);  // Verifica que se esté llamando correctamente
-    setIsDarkMode((prevMode) => !prevMode);  // Cambia el tema entre oscuro/claro
+  // Estado para manejar el tema. Inicialmente es 'light', pero puedes cambiarlo a cualquier tema de DaisyUI que prefieras
+  const [theme, setTheme] = useState('light');
+
+  // Función para cambiar el tema
+  const changeTheme = (newTheme) => {
+    console.log('Cambiando el tema a:', newTheme); // Verifica que se esté llamando correctamente
+    setTheme(newTheme);  // Cambia el tema al nuevo seleccionado
+    document.documentElement.setAttribute('data-theme', newTheme);  // Aplica el tema a nivel del DOM usando DaisyUI
   };
 
+  // Efecto que aplica el tema actual cuando se monta el componente
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
       {children}
     </ThemeContext.Provider>
   );
