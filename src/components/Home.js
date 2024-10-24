@@ -6,7 +6,7 @@ function Home() {
     <section
       id="home"
       className="relative py-8 bg-base-200 shadow-md rounded-lg mb-8"
-      style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1533577116850-9cc66cad8a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)' }}
+      style={{ backgroundImage: 'url(https://st2.depositphotos.com/4164031/7029/i/450/depositphotos_70298385-stock-photo-deep-space.jpg)' }}
     >
       {/* The overlay */}
       <div className="absolute inset-0 bg-black opacity-50 rounded-lg z-0"></div>
@@ -20,23 +20,23 @@ function Home() {
         <div className="flex justify-center space-x-4">
           {/* Botón para "Ir a Clima en Marte" */}
           <Link
-            to="mars-weather"
-            smooth={true}
-            duration={500}
-            className="inline-block mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 cursor-pointer"
-          >
-            Ir a Clima en Marte
-          </Link>
+  to="mars-weather"
+  smooth={true}
+  duration={500}
+  className="btn bg-blue-500 text-white hover:bg-blue-700"
+>
+  Ir a Clima en Marte
+</Link>
 
-          {/* Botón para "Ver Imagen del Día" */}
-          <Link
-            to="nasa"
-            smooth={true}
-            duration={500}
-            className="inline-block mt-6 bg-purple-600 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-purple-700 transition duration-300 cursor-pointer"
-          >
-            Ver Imagen del Día
-          </Link>
+<Link
+  to="nasa"
+  smooth={true}
+  duration={500}
+  className="btn bg-pink-500 text-white hover:bg-pink-700"
+>
+  Ver Imagen del Día
+</Link>
+
         </div>
       </div>
     </section>
