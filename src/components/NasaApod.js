@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 function NasaApod() {
   const [data, setData] = useState(null);
@@ -10,12 +11,13 @@ function NasaApod() {
     const API_KEY = 'vkkGwSJXDi7bzw0FQAZGQvwGTDSO3KWoj01plMkV';
     const URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
-    axios.get(URL)
+    axios
+      .get(URL)
       .then((response) => {
         setData(response.data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         setError('Error al obtener la imagen del día');
         setLoading(false);
       });
@@ -30,20 +32,62 @@ function NasaApod() {
   }
 
   return (
-    <section id="nasa" className="py-8 bg-base-100 shadow-md rounded-lg mb-8">
-      <h2 className="text-2xl font-bold mb-6 text-center text-base-content">Imagen del Día de la NASA</h2>
-      <div className="flex flex-col items-center justify-center">
-        {/* Imagen con ancho máximo */}
-        <img
-          src={data.url}
-          alt={data.title}
-          className="w-full max-w-lg object-cover rounded-lg shadow-lg mb-4"
-        />
-        {/* Texto descriptivo */}
-        <h3 className="text-xl font-semibold text-base-content">{data.title}</h3>
-        <p className="text-base-content">{data.explanation}</p>
-      </div>
-    </section>
+    <motion.section
+      id="nasa"
+      className="py-8 px-4 bg-base-100 shadow-md rounded-lg mb-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div
+        className="card w-full bg-base-200 shadow-xl"
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
+        <figure className="px-10 pt-10">
+          <motion.img
+            src={data.url}
+            alt={data.title}
+            className="rounded-xl shadow-lg max-w-lg w-full object-cover"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          />
+        </figure>
+        <div className="card-body items-center text-center">
+          <motion.h2
+            className="card-title text-3xl font-bold mb-2"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            {data.title}
+          </motion.h2>
+          <motion.p
+            className="text-base-content text-justify mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            {data.explanation}
+          </motion.p>
+          <motion.div
+            className="card-actions justify-center"
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: 'spring', stiffness: 400 }}
+          >
+            <a
+              href={data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Ver en alta resolución
+            </a>
+          </motion.div>
+        </div>
+      </motion.div>
+    </motion.section>
   );
 }
 
