@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-scroll';
+import { ThemeContext } from '../context/ThemeContext';
 
 function Search({ sections }) {
+  const { theme } = useContext(ThemeContext);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
@@ -48,11 +50,15 @@ function Search({ sections }) {
         value={query}
         onChange={handleSearch}
         placeholder="Buscar sección..."
-        className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className={`block w-full p-2 ps-10 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 ${
+          theme === 'light'
+            ? 'bg-gray-100 text-gray-900 border-gray-300'
+            : 'bg-gray-700 text-white border-gray-600'
+        }`}
       />
 
       {results.length > 0 && (
-        <div className="absolute bg-white border mt-1 rounded-lg shadow-lg w-full z-10">
+        <div className={`absolute mt-1 rounded-lg shadow-lg w-full z-10 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}>
           {results.map((result) => (
             <Link
               key={result.id}
@@ -60,7 +66,7 @@ function Search({ sections }) {
               smooth={true}
               duration={500}
               onClick={handleSelect}
-              className="block px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
+              className={`block px-4 py-2 hover:bg-${theme === 'light' ? 'gray-200' : 'gray-600'} cursor-pointer`}
             >
               {result.label}
             </Link>
