@@ -87,7 +87,7 @@ function NasaApod() {
               href={data.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary"
+              className="btn btn-success text-white"
             >
               Ver en alta resolución
             </a>

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { WiThermometer, WiStrongWind, WiBarometer, WiMeteor } from 'react-icons/wi';
 import { ThemeContext } from '../context/ThemeContext'; // Importamos el contexto de tema
 
-
 function MarsWeather() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +12,6 @@ function MarsWeather() {
   const [solKeys, setSolKeys] = useState([]); // Lista de días marcianos
   const [currentSolIndex, setCurrentSolIndex] = useState(0); // Día seleccionado
   const { theme } = useContext(ThemeContext); // Obtenemos el tema actual
-
 
   const loadingMessages = [
     "Conectando con satélites...",
@@ -37,7 +35,7 @@ function MarsWeather() {
       // Añadir un retraso adicional para la animación de carga
       setTimeout(() => {
         setLoading(false);
-      }, 5000); // Retraso de los datos
+      }, 3000); // Retraso de los datos
     } catch (err) {
       setError('Error al obtener los datos del clima');
       setLoading(false);
@@ -61,12 +59,12 @@ function MarsWeather() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[40vh] text-gray-200">
+      <div className="flex flex-col items-center justify-center min-h-[40vh]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-xl font-semibold mb-4"
+          className={`text-xl font-semibold mb-4 ${theme === 'light' ? 'text-gray-700' : 'text-gray-200'}`} // Color de texto condicional
         >
           {loadingMessages[messageIndex]}
         </motion.div>
@@ -127,8 +125,9 @@ function MarsWeather() {
             transition={{ duration: 0.5 }}
             className="flex flex-col md:flex-row justify-center items-center gap-6 text-center"
           >
+            {/* Tarjeta de Temperatura */}
             <motion.div
-              className="bg-base-200 p-6 rounded-lg shadow-lg"
+              className="bg-base-200 p-6 rounded-lg shadow-lg flex flex-col items-center justify-between w-full max-w-xs h-48"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -139,8 +138,9 @@ function MarsWeather() {
               <p className="text-base-content">Promedio: {solData.AT?.av ? `${solData.AT.av}°C` : '-'}</p>
             </motion.div>
 
+            {/* Tarjeta de Viento */}
             <motion.div
-              className="bg-base-200 p-6 rounded-lg shadow-lg"
+              className="bg-base-200 p-6 rounded-lg shadow-lg flex flex-col items-center justify-between w-full max-w-xs h-48"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -151,8 +151,9 @@ function MarsWeather() {
               <p className="text-base-content">Dirección: {solData.WD?.most_common?.compass_point || '-'}</p>
             </motion.div>
 
+            {/* Tarjeta de Presión */}
             <motion.div
-              className="bg-base-200 p-6 rounded-lg shadow-lg"
+              className="bg-base-200 p-6 rounded-lg shadow-lg flex flex-col items-center justify-between w-full max-w-xs h-48"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -162,8 +163,9 @@ function MarsWeather() {
               <p className="text-base-content">Promedio: {solData.PRE?.av ? `${solData.PRE.av} Pa` : '-'}</p>
             </motion.div>
 
+            {/* Tarjeta de Estación */}
             <motion.div
-              className="bg-base-200 p-6 rounded-lg shadow-lg"
+              className="bg-base-200 p-6 rounded-lg shadow-lg flex flex-col items-center justify-between w-full max-w-xs h-48"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -194,7 +196,7 @@ function MarsWeather() {
       <div className="flex justify-center mt-6">
         <button
           onClick={fetchWeatherData}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500 transition"
+          className="btn btn-success text-white rounded"
         >
           Actualizar datos
         </button>

@@ -1,11 +1,17 @@
-/* Estilos para el tema claro */
+
+/* Fondo global y tema claro */
 .light {
-  background-color: #f8f9fa;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
   color: #212529;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Colores para los enlaces en el tema claro */
+/* Tema oscuro */
+.dark {
+  background: linear-gradient(to bottom, #2d2d2d, #1c1c1c);
+  color: #f8f9fa;
+}
+
+/* Estilos de enlaces en tema claro */
 .light a {
   color: #212529;
 }
@@ -14,14 +20,7 @@
   color: #0056b3;
 }
 
-/* Estilos para el tema oscuro */
-.dark {
-  background-color: #2d2d2d;
-  color: #f8f9fa;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Colores para los enlaces del header en tema oscuro */
+/* Estilos de enlaces en el header para tema oscuro */
 header a {
   color: #ffffff;
 }
@@ -30,23 +29,7 @@ header a:hover {
   color: #00bfff;
 }
 
-/* Ajustes de espacio para el buscador */
-input[type="text"] {
-  background-color: transparent;
-  border: 1px solid #666;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 50px;
-  width: 200px;
-  transition: width 0.4s ease;
-}
-
-input[type="text"]:focus {
-  width: 300px;
-  border-color: #fff;
-}
-
-/* Estilos de botones */
+/* Estilos de botones en tema claro */
 button {
   background-color: #007bff;
   color: white;
@@ -61,6 +44,7 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Estilos de botones en tema oscuro */
 .dark button {
   background-color: #495057;
 }
@@ -69,13 +53,23 @@ button:hover {
   background-color: #343a40;
 }
 
-/* Fuente personalizada */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-body {
-  font-family: 'Roboto', sans-serif;
+/* Estilos del buscador */
+input[type="text"] {
+  background-color: transparent;
+  border: 1px solid #666;
+  color: inherit;
+  padding: 8px 16px;
+  border-radius: 50px;
+  width: 200px;
+  transition: width 0.4s ease;
 }
 
+input[type="text"]:focus {
+  width: 300px;
+  border-color: #fff;
+}
+
+/* Animación blob */
 @keyframes blob {
   0% {
     transform: translate(0px, 0px) scale(1);
@@ -95,3 +89,11 @@ body {
   animation: blob 7s infinite;
 }
 
+/* Ajustes de color para texto en temas */
+.text-light {
+  color: #212529;
+}
+
+.text-dark {
+  color: #f8f9fa;
+}

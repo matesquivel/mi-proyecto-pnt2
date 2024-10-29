@@ -22,12 +22,12 @@ function Navbar() {
     <nav className="bg-base-100 shadow-md">
       <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
         
-        {/* Logo ajustado */}
-        <a href="#home" className="flex items-center space-x-3 rtl:space-x-reverse">
-  <img src="https://i.ibb.co/mXHsmKq/Logo-Techce.png" className="h-16 w-auto p-2" alt="Logo" />
-</a>
-
-
+        {/* Nombre estilizado */}
+        <a href="#home" className="flex items-center space-x-3">
+          <span className="text-4xl font-bold tracking-wider leading-snug text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-500 shadow-md hover:scale-105 transition-transform duration-300 ease-in-out pb-1">
+            Techce
+          </span>
+        </a>
 
         {/* Menú centrado */}
         <ul className="flex flex-grow justify-center space-x-8 font-medium">

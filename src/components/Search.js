@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-scroll';
 import { ThemeContext } from '../context/ThemeContext';
 
@@ -6,28 +6,52 @@ function Search({ sections }) {
   const { theme } = useContext(ThemeContext);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const searchRef = useRef(null);
 
+  // Manejar la búsqueda y filtrar resultados
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
 
     if (searchTerm) {
       const filteredResults = sections.filter((section) =>
-        section.name.toLowerCase().includes(searchTerm)
+        section.label.toLowerCase().includes(searchTerm)
       );
       setResults(filteredResults);
     } else {
-      setResults([]);
+      setResults(sections); // Muestra todas las secciones si no hay término de búsqueda
     }
   };
 
+  // Mostrar todas las opciones al hacer clic en el campo de búsqueda
+  const handleFocus = () => {
+    if (!query) {
+      setResults(sections); // Despliega todas las opciones si el campo está vacío
+    }
+  };
+
+  // Cerrar el menú al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setResults([]); // Cierra el menú si se hace clic fuera de él
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Selección de un resultado y limpieza del input
   const handleSelect = () => {
     setQuery(''); // Limpia la búsqueda después de seleccionar un resultado
     setResults([]); // Cierra la lista de resultados
   };
 
   return (
-    <div className="relative md:block">
+    <div className="relative md:block" ref={searchRef}>
       <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg
           className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -49,6 +73,7 @@ function Search({ sections }) {
         type="text"
         value={query}
         onChange={handleSearch}
+        onFocus={handleFocus} // Despliega opciones al hacer clic en el campo de búsqueda
         placeholder="Buscar sección..."
         className={`block w-full p-2 ps-10 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 ${
           theme === 'light'
@@ -58,7 +83,9 @@ function Search({ sections }) {
       />
 
       {results.length > 0 && (
-        <div className={`absolute mt-1 rounded-lg shadow-lg w-full z-10 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}>
+        <div
+          className={`absolute mt-1 rounded-lg shadow-lg w-full z-50 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}
+        >
           {results.map((result) => (
             <Link
               key={result.id}
