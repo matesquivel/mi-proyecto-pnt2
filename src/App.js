@@ -6,7 +6,7 @@ import NasaApod from './components/NasaApod';
 import About from './components/About';
 import Footer from './components/Footer';
 import ScrollButton from './components/ScrollButton';
-import { ThemeProvider } from './context/ThemeContext';  // Asegúrate de importar el ThemeProvider
+import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
   return (

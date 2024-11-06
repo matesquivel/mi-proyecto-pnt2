@@ -25,7 +25,7 @@ function Navbar() {
         {/* Nombre estilizado */}
         <a href="#home" className="flex items-center space-x-3">
           <span className="text-4xl font-bold tracking-wider leading-snug text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-teal-400 to-cyan-500 shadow-md hover:scale-105 transition-transform duration-300 ease-in-out pb-1">
-            Techce
+            NASA+
           </span>
         </a>
 
