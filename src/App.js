@@ -21,7 +21,7 @@ function App() {
             <Home />
           </section>
 
-          <section id="mars-weather" className="py-8 bg-base-100 shadow-md rounded-lg mb-8">
+          {/* <section id="mars-weather" className="py-8 bg-base-100 shadow-md rounded-lg mb-8">
             <MarsWeather />
           </section>
 
@@ -31,7 +31,7 @@ function App() {
 
           <section id="about" className="py-8 bg-base-100 shadow-md rounded-lg mb-8">
             <About />
-          </section>
+          </section> */}
         </main>
 
         {/* Footer */}

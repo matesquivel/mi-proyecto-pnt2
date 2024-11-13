@@ -8,7 +8,7 @@ function Navbar() {
   const [query, setQuery] = useState('');
   const sections = [
     { id: '1', name: 'home', label: 'Inicio' },
-    { id: '2', name: 'nasa', label: 'NASA' },
+    { id: '2', name: 'nasa', label: 'Imagen del día' },
     { id: '3', name: 'mars-weather', label: 'Clima en Marte' },
     { id: '4', name: 'about', label: 'Acerca de' },
   ];
