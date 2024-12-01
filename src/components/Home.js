@@ -1,8 +1,8 @@
 // Home.js
 import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
-// import { Link } from 'react-scroll';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
+//import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function Home() {
