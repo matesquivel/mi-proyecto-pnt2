@@ -1,87 +1,93 @@
-import { Link } from 'react-scroll';
+'use client'
 
-function Footer() {
+import React, { useContext } from 'react'
+import { Link } from 'react-scroll'
+import { Github, Twitter, Instagram, ExternalLink } from 'lucide-react'
+import { ThemeContext } from '../context/ThemeContext'
+
+export default function Footer() {
+  const { theme } = useContext(ThemeContext)
+
   return (
-    <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
-      <nav className="grid grid-flow-col gap-4">
-        {/* Enlaces internos con react-scroll */}
-        <Link
-          to="home"
-          smooth={true}
-          duration={500}
-          className="link link-hover cursor-pointer"
-        >
-          Home
-        </Link>
-        <Link
-          to="about"
-          smooth={true}
-          duration={500}
-          className="link link-hover cursor-pointer"
-        >
-          About us
-        </Link>
-        <a
-          href="https://nasa.gov"
-          target="_blank"
-          rel="noreferrer"
-          className="link link-hover"
-        >
-          Nasa Web
-        </a>
-        <a
-          href="https://aulavirtual.instituto.ort.edu.ar"
-          target="_blank"
-          rel="noreferrer"
-          className="link link-hover"
-        >
-          Aula Virtual ORT
-        </a>
-      </nav>
-      
-      <nav>
-        <div className="grid grid-flow-col gap-4">
-          {/* Enlace de Twitter */}
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current">
-              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-            </svg>
-          </a>
-          {/* Enlace de YouTube */}
-          <a href="https://youtube.com" target="_blank" rel="noreferrer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current">
-              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-            </svg>
-          </a>
-          {/* Enlace de Facebook */}
-          <a href="https://facebook.com" target="_blank" rel="noreferrer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="fill-current">
-              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-            </svg>
-          </a>
+    <footer className={`bg-base-300 text-base-content py-8 ${theme}`}>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold">Exploración Espacial</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="mars-weather" smooth={true} duration={500} className="link link-hover">
+                  Clima en Marte
+                </Link>
+              </li>
+              <li>
+                <Link to="apod" smooth={true} duration={500} className="link link-hover">
+                  Imagen del Día
+                </Link>
+              </li>
+              <li>
+                <Link to="about" smooth={true} duration={500} className="link link-hover">
+                  Sobre Nosotros
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold">Recursos</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="https://api.nasa.gov/" target="_blank" rel="noopener noreferrer" className="link link-hover inline-flex items-center">
+                  APIs de la NASA
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.nasa.gov/mars" target="_blank" rel="noopener noreferrer" className="link link-hover inline-flex items-center">
+                  Exploración de Marte
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer" className="link link-hover inline-flex items-center">
+                  NASA.gov
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+              </li>
+              <li>
+                <a href="https://aulavirtual.instituto.ort.edu.ar" target="_blank" rel="noopener noreferrer" className="link link-hover inline-flex items-center">
+                  Aula Virtual ORT
+                  <ExternalLink className="w-4 h-4 ml-1" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold">Síguenos</h3>
+            <div className="flex space-x-4">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="link link-hover">
+                <Github className="w-6 h-6" />
+                <span className="sr-only">GitHub</span>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="link link-hover">
+                <Twitter className="w-6 h-6" />
+                <span className="sr-only">Twitter</span>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="link link-hover">
+                <Instagram className="w-6 h-6" />
+                <span className="sr-only">Instagram</span>
+              </a>
+            </div>
+          </div>
         </div>
-      </nav>
-
-      <aside>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
-      </aside>
+        <div className="mt-8 pt-8 border-t border-base-content border-opacity-20 text-center">
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} Exploración Espacial. Todos los derechos reservados.
+          </p>
+          <p className="text-xs mt-2">
+            Datos proporcionados por la NASA. Este sitio no está afiliado, respaldado ni patrocinado por la NASA.
+          </p>
+        </div>
+      </div>
     </footer>
-  );
+  )
 }
-
-export default Footer;
