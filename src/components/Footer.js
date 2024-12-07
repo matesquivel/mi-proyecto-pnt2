@@ -21,7 +21,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="nasa-apod" smooth={true} duration={500} className="link link-hover">
+                <Link to="nasa" smooth={true} duration={500} className="link link-hover">
                   Imagen del Día
                 </Link>
               </li>
