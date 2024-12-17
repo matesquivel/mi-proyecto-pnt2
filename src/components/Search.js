@@ -19,14 +19,14 @@ function Search({ sections }) {
       );
       setResults(filteredResults);
     } else {
-      setResults(sections); // Muestra todas las secciones si no hay término de búsqueda
+      setResults(sections); 
     }
   };
 
   // Mostrar todas las opciones al hacer clic en el campo de búsqueda
   const handleFocus = () => {
     if (!query) {
-      setResults(sections); // Despliega todas las opciones si el campo está vacío
+      setResults(sections); 
     }
   };
 
@@ -34,7 +34,7 @@ function Search({ sections }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setResults([]); // Cierra el menú si se hace clic fuera de él
+        setResults([]); 
       }
     };
 
@@ -46,8 +46,8 @@ function Search({ sections }) {
 
   // Selección de un resultado y limpieza del input
   const handleSelect = () => {
-    setQuery(''); // Limpia la búsqueda después de seleccionar un resultado
-    setResults([]); // Cierra la lista de resultados
+    setQuery(''); 
+    setResults([]); 
   };
 
   return (
@@ -73,7 +73,7 @@ function Search({ sections }) {
         type="text"
         value={query}
         onChange={handleSearch}
-        onFocus={handleFocus} // Despliega opciones al hacer clic en el campo de búsqueda
+        onFocus={handleFocus} 
         placeholder="Buscar sección..."
         className={`block w-full p-2 ps-10 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 ${
           theme === 'light'

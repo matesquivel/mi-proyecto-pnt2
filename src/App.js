@@ -12,10 +12,10 @@ function App() {
   return (
     <ThemeProvider>
       <div className="flex flex-col min-h-screen">
-        {/* Navbar */}
+        
         <Navbar />
 
-        {/* Contenido principal */}
+        
         <main className="flex-grow p-4">
           <section id="home" className="py-8 bg-base-200 shadow-md rounded-lg mb-8">
             <Home />
@@ -34,7 +34,7 @@ function App() {
           </section>
         </main>
 
-        {/* Footer */}
+        
         <Footer />
 
         <ScrollButton/>
